@@ -1,26 +1,28 @@
+import React, { useEffect, useState } from 'react';
+import axios from '../../axiosConfig';
 import './TravelLogsPage.css';
 
-const travelLogs = [
-    {
-        id: 1,
-        title: 'Dungeon Crawling in the Ice Kingdom',
-        description: 'Jake and I explored a mysterious dungeon under the Ice King\'s castle. Found some sweet loot and battled ice creatures!',
-        startDate: '2024-05-10',
-        endDate: '2024-05-12',
-        tags: ['adventure', 'dungeon', 'ice kingdom', 'treasure']
-    },
-    {
-        id: 2,
-        title: 'Journey to the Nightosphere',
-        description: 'Used Hunson Abadeer\'s amulet to travel to the Nightosphere. That place is bananas! Had to save some souls and jam with Marceline.',
-        startDate: '2024-03-21',
-        endDate: '2024-03-22',
-        tags: ['nightosphere', 'demons', 'marceline', 'dangerous']
-    },
-    // Sample data for now, will read in from the database later
-];
-
 const TravelLogsPage = () => {
+    const [travelLogs, setTravelLogs] = useState([]);
+
+    useEffect(() => {
+        // Fetch travel logs from the backend
+        const fetchTravelLogs = async () => {
+            try {
+                const response = await axios.get('/api/travelLog'); // Make GET request to the backend
+                const logs = response.data.map(log => ({
+                    ...log,
+                    tags: log.tags.split(',').map(tag => tag.trim()) // Parse tags into an array
+                }));
+                setTravelLogs(logs); // Update state with fetched data
+            } catch (error) {
+                console.error('Error fetching journey plans:', error); // Log any errors
+            }
+        };
+
+        fetchTravelLogs(); // Call the function
+    }, []);
+
     return (
         <div className="travelLogsPage">
 
@@ -47,8 +49,9 @@ const TravelLogsPage = () => {
                         <div className="travelCardContent">
                             <h3>{log.title}</h3>
                             <p>{log.description}</p>
-                            <p><strong>Start Date:</strong> {log.startDate}</p>
-                            <p><strong>End Date:</strong> {log.endDate}</p>
+                            <p><strong>Start Date:</strong> {log.start_date}</p>
+                            <p><strong>End Date:</strong> {log.end_date}</p>
+                            <p><strong>Post Date:</strong> {log.post_date}</p>
 
                             <div className="tags">
                                 {log.tags.map(tag => (

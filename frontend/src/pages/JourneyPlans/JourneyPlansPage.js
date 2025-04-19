@@ -1,28 +1,24 @@
+import React, { useEffect, useState } from 'react';
+import axios from '../../axiosConfig';
 import './JourneyPlansPage.css';
 
-const journeyPlans = [
-    {
-        plan_id: 1,
-        journey_name: 'Exploring the Candy Kingdom',
-        locations: 'Candy Castle, Peppermint Fields, Gumball Gardens',
-        start_date: '2024-06-01',
-        end_date: '2024-06-05',
-        activities: 'Meeting Princess Bubblegum, Candy Science Experiments, Candy Tasting',
-        description: 'A sweet adventure through the Candy Kingdom, filled with fun and sugary delights!'
-    },
-    {
-        plan_id: 2,
-        journey_name: 'Adventure in the Fire Kingdom',
-        locations: 'Flame Castle, Lava Pits, Ember Forest',
-        start_date: '2024-07-10',
-        end_date: '2024-07-15',
-        activities: 'Battling Flame Monsters, Exploring Lava Caves, Fireproof Training',
-        description: 'A fiery journey through the Fire Kingdom, full of heat and excitement!'
-    },
-    // Sample data for now, will read in from the database later
-];
-
 const JourneyPlansPage = () => {
+    const [journeyPlans, setJourneyPlans] = useState([]);
+
+    useEffect(() => {
+        // Fetch journey plans from the backend
+        const fetchJourneyPlans = async () => {
+            try {
+                const response = await axios.get('/api/journeyPlan'); // Make GET request to the backend
+                setJourneyPlans(response.data); // Update state with fetched data
+            } catch (error) {
+                console.error('Error fetching journey plans:', error); // Log any errors
+            }
+        };
+
+        fetchJourneyPlans(); // Call the function
+    }, []);
+
     return (
         <div className="journeyPlansPage">
 
