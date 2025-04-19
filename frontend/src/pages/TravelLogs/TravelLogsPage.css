@@ -31,6 +31,15 @@
     padding: 0;
 }
 
+.travelLogsPage .createForm {
+    background-color: #1E90FF;
+    border-top: 10px solid #f9d7ba;
+    border-right: 10px solid #39a024;
+    border-left: 10px solid #39a024;
+    border-bottom: 10px solid #0F68D0;
+    text-align: center;
+}
+
 #plusIcon:hover {
     cursor: pointer;
     transform: scale(1.15);

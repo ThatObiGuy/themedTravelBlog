@@ -13,29 +13,29 @@ const LandingPage = () => {
         <p>Join all sorts of characters including Jake the dog and Finn the human as they document their travels and plan epic quests across the kingdoms.</p>
       </div>
 
-      <div class="spotlights">
+      <div className="spotlights">
 
-        <div class="spotlight-container">
+        <div className="spotlight-container">
 
           <Link to="/TravelLogs">
-            <div id="travelCard" class="card">
-              <div class="spotlightIcon">📝</div>
+            <div id="travelCard" className="card">
+              <div className="spotlightIcon">📝</div>
               <h3>Travel Logs</h3>
               <p>Share your epic quests, dungeon crawls, and princess rescues!</p>
             </div>
           </Link>
           
           <Link to="/JourneyPlans">
-            <div id="journeyCard" class="card">
-              <div class="spotlightIcon">🧭</div>
+            <div id="journeyCard" className="card">
+              <div className="spotlightIcon">🧭</div>
               <h3>Journey Plans</h3>
               <p>Post your next adventure and share your plan to explore new territory!</p>
             </div>
           </Link>
           
           <Link to="/Map">
-            <div id="mapCard" class="card">
-              <div class="spotlightIcon">🗺️</div>
+            <div id="mapCard" className="card">
+              <div className="spotlightIcon">🗺️</div>
               <h3>Kingdom Directory</h3>
               <p>--- UNDER CONSTRUCTION --- (*Interactive map*)</p>
             </div>

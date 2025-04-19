@@ -50,7 +50,7 @@ const deleteJourneyPlan = (req, res) => {
     const { plan_id } = req.params; // Take the plan ID from the request parameters
 
     // SQL query to delete a journey plan
-    const sql = 'DELETE FROM Journey_Plans WHERE plan_id = ?';
+    const sql = 'DELETE WHERE `journey_plans`.`plan_id` = ?';
     db.query(sql, [plan_id], (err, results) => { // Execute the query
         if (err) { // If there is an error
             console.error(err); // Log the error

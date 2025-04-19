@@ -62,10 +62,10 @@ const LoginPage = () => {
                         <div className="loginForm">
                             <form>
                                 <div className="formGroup">
-                                    <input type="text" className="formInput" placeholder="Username" required></input>
+                                    <input type="text" className="formInput" placeholder="Username" required />
                                 </div>
                                 <div className="formGroup">
-                                    <input type="password" className="formInput" placeholder="Password" required></input>
+                                    <input type="password" className="formInput" placeholder="Password" required />
                                 </div>
                                 <button type="submit" className="submitBtn">Adventure Time!</button>
                             </form>
