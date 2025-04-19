@@ -1,16 +1,7 @@
 INSERT INTO Users (username, password, email, address) VALUES 
-('FinnTheHuman', 'AdventureTime123', 'finn@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
-('JakeTheDog', 'LadyRainicorn99', 'jake@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
-('BMO', 'WhoWantsPMO8888', 'bmo@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
-('PrincessBubblegum', 'ScienceRules2023', 'pb@candykingdom.gov', 'Candy Kingdom, Land of Ooo'),
-('IceKing', 'PenguinsRock4Ever', 'simon@icekingdom.com', 'Ice Kingdom, Land of Ooo'),
-('Marceline', 'VampireQueen1000', 'marcy@nightosphere.net', 'Cave House, Land of Ooo'),
-('LumpySpacePrincess', 'OhMyGlob123', 'lsp@lumpyspace.org', 'Lumpy Space'),
-('FlamePrincess', 'BurningBright567', 'fp@fireelementals.com', 'Fire Kingdom, Land of Ooo'),
-('EarlOfLemongrab', 'UNACCEPTABLE12!', 'lemongrab@candykingdom.gov', 'Castle Lemongrab, Land of Ooo'),
-('GuntherTheGunter', 'WenkWenk12345', 'gunther@icekingdom.com', 'Ice Kingdom, Land of Ooo'),
-('LadyRainicorn', 'RainbowUnicorn123', 'lady@crystaldimension.com', 'Crystal Dimension'),
-('PeppermintButler', 'DarkArts666', 'pbutler@candykingdom.gov', 'Candy Kingdom, Land of Ooo'),
-('HunsonAbadeer', 'LordOfEvil999', 'hunson@nightosphere.net', 'The Nightosphere'),
-('PrismoPrime', 'TimeCubeMaster', 'prismo@timeroom.cosmos', 'Time Room, Multiverse'),
-('JamesBaxter', 'GamesBallsGames', 'jbaxter@landofooo.com', 'Roaming, Land of Ooo');
+('FinnTheHuman', 'db1160e4448dbf5cfcb869f4c53e2630c45bf3d62c09fd07122b02f411f22a1e', 'finn@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
+('JakeTheDog', '10704a99411469d17971fa4d93fbbb4e5e97083d080a527a5956d992519c4cb2', 'jake@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
+('BMO', 'd2798218ffb65fb3ca5d69f63662dc17bfbdeb08792416b934667f97a43704db', 'bmo@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
+('PrincessBubblegum', '5f693a4c3cdbe5a9cb2e1593ffa67c32ad582862e92bac828fd27df7e15f8b92', 'pb@candykingdom.gov', 'Candy Kingdom, Land of Ooo'),
+('Marceline', '666ea0ecfb2938d00d8e534d53008f57a87b364ee0ab5af873d18d8e851c3b36', 'marcy@nightosphere.net', 'Cave House, Land of Ooo'),
+('GuntherTheGunter', '644229615ed57b2b0dc27c12cd130afd5e5f8bdba7493f0574948b5d5df41678', 'gunther@icekingdom.com', 'Ice Kingdom, Land of Ooo');
