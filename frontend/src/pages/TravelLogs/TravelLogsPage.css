@@ -1,0 +1,70 @@
+.travelLogsPage {
+    width: 90vw;
+    margin-left: 5vw;
+}
+
+.Card {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Card:hover {
+    transform: scale(1.05);
+}
+
+#createLog {
+    border-top: 20px #FFFFFF solid;
+    border-left: 20px #FFFFFF solid;
+    border-right: 20px #FFFFFF solid;
+    background-color: #f9d7ba;
+    border-bottom: 15px #1E90FF solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+#createLog  h2{
+    margin: 0;
+    padding: 0;
+}
+
+#plusIcon:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+#travelLog {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    position: relative
+}
+
+.CRUDIcons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.CRUDIcons svg:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+#travelLog h3 {
+    color: #1E90FF;
+    margin-bottom: 10px;
+}
+
+#travelLog .tag {
+    display: inline-block;
+    background-color: #FFD700;
+    color: #000;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-size: 12px;
+}

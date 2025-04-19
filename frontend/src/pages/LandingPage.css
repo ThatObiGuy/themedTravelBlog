@@ -1,0 +1,65 @@
+#landingPageHeader{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+#landingPageHeader h1 {
+    margin: 0;
+}
+
+#landingPageHeader p {
+    font-weight: bold;
+    margin: 0;
+}
+
+.spotlight-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 100vw;
+}
+
+.spotlight-container a { /* link adds a to all elements */
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherits colour that isn't from the a tag */
+}
+
+.card {
+    background-color: #f0f0f0f0;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    width: 300px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+#travelCard {
+    border-top: 5px #1E90FF solid;
+}
+
+#journeyCard {
+    border-top: 5px #FFC0CB  solid;
+}
+
+#mapCard {
+    border-top: 5px #FFD700  solid;
+}
+
+.spotlightIcon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #1E90FF;
+    margin-bottom: 15px;
+}

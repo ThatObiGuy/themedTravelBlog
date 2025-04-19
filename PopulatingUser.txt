@@ -1,0 +1,16 @@
+INSERT INTO Users (username, password, email, address) VALUES 
+('FinnTheHuman', 'AdventureTime123', 'finn@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
+('JakeTheDog', 'LadyRainicorn99', 'jake@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
+('BMO', 'WhoWantsPMO8888', 'bmo@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
+('PrincessBubblegum', 'ScienceRules2023', 'pb@candykingdom.gov', 'Candy Kingdom, Land of Ooo'),
+('IceKing', 'PenguinsRock4Ever', 'simon@icekingdom.com', 'Ice Kingdom, Land of Ooo'),
+('Marceline', 'VampireQueen1000', 'marcy@nightosphere.net', 'Cave House, Land of Ooo'),
+('LumpySpacePrincess', 'OhMyGlob123', 'lsp@lumpyspace.org', 'Lumpy Space'),
+('FlamePrincess', 'BurningBright567', 'fp@fireelementals.com', 'Fire Kingdom, Land of Ooo'),
+('EarlOfLemongrab', 'UNACCEPTABLE12!', 'lemongrab@candykingdom.gov', 'Castle Lemongrab, Land of Ooo'),
+('GuntherTheGunter', 'WenkWenk12345', 'gunther@icekingdom.com', 'Ice Kingdom, Land of Ooo'),
+('LadyRainicorn', 'RainbowUnicorn123', 'lady@crystaldimension.com', 'Crystal Dimension'),
+('PeppermintButler', 'DarkArts666', 'pbutler@candykingdom.gov', 'Candy Kingdom, Land of Ooo'),
+('HunsonAbadeer', 'LordOfEvil999', 'hunson@nightosphere.net', 'The Nightosphere'),
+('PrismoPrime', 'TimeCubeMaster', 'prismo@timeroom.cosmos', 'Time Room, Multiverse'),
+('JamesBaxter', 'GamesBallsGames', 'jbaxter@landofooo.com', 'Roaming, Land of Ooo');

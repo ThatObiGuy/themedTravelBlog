@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'AdventureTime';
+  src: url('./assets/fonts/adventuretime.ttf') format('truetype');
+}
+
+body {
+  height: 100vh; /* Make the body take up the full viewport height */
+  background: linear-gradient(to bottom, #87CEEB 80%, #7CFC00 20%);
+  background-attachment: fixed; /* Fix the background to the viewport */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'AdventureTime', 'Comic Sans MS'; /* Apply the Adventure Time font to all headers - with comic sans as a fallback */
+  color: crimson; /* Set the text color to crimson */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Create a solid black outline */
+}
+
+.navbar {
+  background-color: #66CDAA;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0; /* Sticks to the top of the screen */
+  z-index: 1000; /* Ensures it stays above other elements */
+}
+
+.navbar svg:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0px;
+  padding: 0px;
+  align-items: center;
+}
+
+.logo h1 {
+  margin: -5px; /* Remove the default margin - let's the sword and title get closer */
+}
+
+#sword {
+  margin-left: -80px; /* Offset the element to the left */
+  color: silver;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+button:hover {
+  background-color: #1E90FF;
+  transform: scale(1.1);
+}
