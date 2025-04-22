@@ -1,7 +1,7 @@
 // testHash.js
 const crypto = require('crypto');
 
-const input = 'WenkWenk12345';
+const input = 'admin';
 const hashedText = crypto.createHash('sha256').update(input).digest('hex');
 console.log('Input:', input);
 console.log('Hashed Text:', hashedText);
@@ -24,6 +24,9 @@ Hashed Text: 666ea0ecfb2938d00d8e534d53008f57a87b364ee0ab5af873d18d8e851c3b36
 
 Input: WenkWenk12345
 Hashed Text: 644229615ed57b2b0dc27c12cd130afd5e5f8bdba7493f0574948b5d5df41678
+
+Input: admin
+Hashed Text: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
 
 'node testHash.js' to run.
 

@@ -99,3 +99,41 @@
     color: #1E90FF;
     margin-bottom: 10px;
 }
+
+.editJourneyCardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%;
+    background-color: #66CDAA;
+    border-color: #1E6D64;
+}
+
+#journeyPlan.Card input,
+#journeyPlan.Card select,
+#journeyPlan.Card textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 2px;
+    border: 2px solid #1E6D64;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    font-family: 'Comic Sans MS';
+}
+
+#journeyPlan.Card button {
+    width: 20%;
+    padding: 10px;
+    margin: 2px;
+    border: 2px solid #1E6D64;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    font-family: 'Comic Sans MS';
+}
+
+#journeyPlan.Card button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: #1E6D64;
+}

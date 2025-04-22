@@ -53,6 +53,7 @@ const deleteTravelLog = (req, res) => {
     // SQL query to delete a travel log
     const sql = 'DELETE FROM Travel_Logs WHERE log_id = ?';
     db.query(sql, [log_id], (err, results) => { // Execute the query
+        console.log('Query Results:', results); // Log the query results
         if (err) { // If there is an error
             console.error(err); // Log the error
             res.status(500).json({ error: 'Internal Server Error' }); // Send a 500 response

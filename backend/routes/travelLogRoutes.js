@@ -4,7 +4,7 @@ const travelLogController = require('../controllers/travelLogController'); // Im
 
 router.get('/', travelLogController.retrieveTravelLogs);
 router.post('/', travelLogController.createTravelLog);
-router.put('/:id', travelLogController.updateTravelLog);
-router.delete('/:id', travelLogController.deleteTravelLog);
+router.put('/:log_id', travelLogController.updateTravelLog);
+router.delete('/:log_id', travelLogController.deleteTravelLog);
 
 module.exports = router; // Export router
