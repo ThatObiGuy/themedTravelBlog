@@ -1,5 +1,5 @@
 const db = require('../db'); // Import database connection
-const crypto = require('crypto'); // Import crypto for hashing
+const bcrypt = require('bcrypt'); // Import bcrypt for password comparing
 
 // Login a user
 const loginUser = (req, res) => {
@@ -18,14 +18,21 @@ const loginUser = (req, res) => {
         }
 
         const user = results[0];
+        const storedHash = user.password; // Assuming the password hash is stored in the 'password' field
 
-        // Compare the hashed password
-        const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
-        if (hashedPassword !== user.password) {
-            return res.status(401).json({ error: 'Invalid username or password' });
-        }
+        // Compare the plaintext password with the stored hash
+        bcrypt.compare(password, storedHash, function(err, result) {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
 
-        res.status(200).json({ message: 'Login successful', user: { id: user.user_id, username: user.username } });
+            if (result) {
+                res.status(200).json({ message: 'Login successful', user: { id: user.user_id, username: user.username } });
+            } else {
+                res.status(401).json({ error: 'Invalid username or password' });
+            }
+        });
     });
 };
 

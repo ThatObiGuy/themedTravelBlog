@@ -1,8 +1,0 @@
-INSERT INTO Users (username, password, email, address) VALUES 
-('FinnTheHuman', 'db1160e4448dbf5cfcb869f4c53e2630c45bf3d62c09fd07122b02f411f22a1e', 'finn@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
-('JakeTheDog', '10704a99411469d17971fa4d93fbbb4e5e97083d080a527a5956d992519c4cb2', 'jake@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
-('BMO', 'd2798218ffb65fb3ca5d69f63662dc17bfbdeb08792416b934667f97a43704db', 'bmo@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
-('PrincessBubblegum', '5f693a4c3cdbe5a9cb2e1593ffa67c32ad582862e92bac828fd27df7e15f8b92', 'pb@candykingdom.gov', 'Candy Kingdom, Land of Ooo'),
-('Marceline', '666ea0ecfb2938d00d8e534d53008f57a87b364ee0ab5af873d18d8e851c3b36', 'marcy@nightosphere.net', 'Cave House, Land of Ooo'),
-('GuntherTheGunter', '644229615ed57b2b0dc27c12cd130afd5e5f8bdba7493f0574948b5d5df41678', 'gunther@icekingdom.com', 'Ice Kingdom, Land of Ooo'),
-('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'admin@gmail.com', 'Ireland, Europe');

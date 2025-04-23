@@ -2,8 +2,10 @@ const db = require('../db'); // Import the connection to the database
 
 // Retrieve all TravelLogs
 const retrieveTravelLogs = (req, res) => {
-    const sql = 'SELECT * FROM Travel_Logs'; // SQL query to select all travel logs
-    db.query(sql, (err, results) => { // Execute the query
+    const { user_id } = req.params;
+
+    const sql = 'SELECT * FROM Travel_Logs WHERE user_id = ?'; // SQL query to select all travel logs
+    db.query(sql, [user_id], (err, results) => { // Execute the query
         if (err) { // If there is an error
             console.error(err); // Log the error
             res.status(500).json({ error: 'Internal Server Error' }); // Send a 500 response

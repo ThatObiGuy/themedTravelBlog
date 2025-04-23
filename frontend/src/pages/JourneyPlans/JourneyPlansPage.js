@@ -21,9 +21,14 @@ const JourneyPlansPage = () => {
     });
 
     useEffect(() => {
-        // Fetch journey plans from the backend
         const fetchJourneyPlans = () => {
-            axios.get('/api/journeyPlan') // Make GET request to the backend
+            const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+            if (!loggedInUser || !loggedInUser.id) {
+                alert("Please log in to access your plans");
+                return;
+            }
+    
+            axios.get(`/api/journeyPlan/${loggedInUser.id}`) // Pass user_id as a query parameter
                 .then(response => {
                     setJourneyPlans(response.data); // Update state with fetched data
                 })
@@ -31,7 +36,7 @@ const JourneyPlansPage = () => {
                     console.error('Error fetching journey plans:', error); // Log any errors
                 });
         };
-
+    
         fetchJourneyPlans(); // Call the function
     }, [refreshPlans]); // Dependency array to re-fetch plans when needed
 

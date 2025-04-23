@@ -1,0 +1,4 @@
+INSERT INTO Travel_Logs (user_id, title, description, start_date, end_date, post_date, tags) VALUES
+(11, 'Dungeon Crawling in the Ice Kingdom', 'Jake and I explored a mysterious dungeon under the Ice King\'s castle. Found some sweet loot and battled ice creatures!', '2024-05-10', '2024-05-12', '2024-05-13', 'adventure,dungeon,ice kingdom,treasure'),
+(11, 'Journey to the Nightosphere', 'Used Hunson Abadeer\'s amulet to travel to the Nightosphere. That place is bananas! Had to save some souls and jam with Marceline.', '2024-03-21', '2024-03-22', '2024-03-25', 'nightosphere,demons,marceline,dangerous'),
+(12, 'Visiting Lady Rainicorn\'s Parents', 'Spent a week in the Crystal Dimension with Lady\'s family. The food is weird but delicious! Learning more Korean phrases.', '2024-04-05', '2024-04-12', '2024-04-15', 'crystal dimension,family,rainicorns,romance');

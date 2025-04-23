@@ -20,9 +20,14 @@ const TravelLogsPage = () => {
     });
 
     useEffect(() => {
-        // Fetch journey plans from the backend
         const fetchTravelLogs = () => {
-            axios.get('/api/travelLog') // Make GET request to the backend
+            const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+            if (!loggedInUser || !loggedInUser.id) {
+                alert("Please log in to access your logs");
+                return;
+            }
+    
+            axios.get(`/api/travelLog/${loggedInUser.id}`) // Pass user_id as a query parameter
                 .then(response => {
                     setTravelLogs(response.data); // Update state with fetched data
                 })
@@ -30,17 +35,8 @@ const TravelLogsPage = () => {
                     console.error('Error fetching travel logs:', error); // Log any errors
                 });
         };
-
+    
         fetchTravelLogs(); // Call the function
-
-        // Fetch logged-in user from sessionStorage
-        const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
-        if (loggedInUser && loggedInUser.id) {
-            setNewLog((prevLog) => ({
-                ...prevLog,
-                user_id: loggedInUser.id, // Set user_id to the logged-in user's ID
-            }));
-        }
     }, [refreshLogs]);
 
     const handleInputChange = (e) => {

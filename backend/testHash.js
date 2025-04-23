@@ -1,10 +1,30 @@
 // testHash.js
-const crypto = require('crypto');
+// const crypto = require('crypto');
 
-const input = 'admin';
-const hashedText = crypto.createHash('sha256').update(input).digest('hex');
-console.log('Input:', input);
-console.log('Hashed Text:', hashedText);
+// const input = 'admin';
+// const hashedText = crypto.createHash('sha256').update(input).digest('hex');
+// console.log('Input:', input);
+// console.log('Hashed Text:', hashedText);
+
+const bcrypt = require('bcrypt');
+const saltRounds = 1;
+const myPlaintextPassword = 'admin';
+
+bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+    console.log('Input:', myPlaintextPassword);
+    console.log('Hashed Text:', hash);
+});
+
+/*
+Input: AdventureTime123
+Hashed Text: $2b$04$rI6PTH1vVuGNioAuYjWbhuQTppAVEmS3LVKaceXVU3g5R3sCrU/Xe
+
+Input: LadyRainicorn99
+Hashed Text: $2b$04$MQqnFeuY4XFrPjIAvw86QORjThmhZjEjYka6pKS/vgEmpq.L72Q8G
+
+Input: admin
+Hashed Text: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+*/
 
 /*
 Input: AdventureTime123

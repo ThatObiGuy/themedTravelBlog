@@ -1,0 +1,4 @@
+INSERT INTO Users (username, password, email, address) VALUES 
+('FinnTheHuman', '$2b$04$rI6PTH1vVuGNioAuYjWbhuQTppAVEmS3LVKaceXVU3g5R3sCrU/Xe', 'finn@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
+('JakeTheDog', '$2b$04$MQqnFeuY4XFrPjIAvw86QORjThmhZjEjYka6pKS/vgEmpq.L72Q8G', 'jake@landofooo.com', 'Tree Fort, Grasslands, Land of Ooo'),
+('admin', '$2b$04$Gm9nyiRraiwXcXJ1LQtpVefthuRtKIAGNNKfnvKjZO67E8fEt1ume', 'admin@gmail.com', 'Ireland, Europe');
