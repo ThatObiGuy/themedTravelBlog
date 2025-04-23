@@ -4,12 +4,34 @@
 }
 
 .container {
-    width: 100%;
     width: 100vw;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.lock {
+    position: relative;
+    top: 100px;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #FFD700;
+    border: 3px solid black;
+}
+
+.lockHole {
+    position: relative;
+    top: 15px;
+    left: 25px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #87CEEB;
+    border: 3px solid black;
 }
 
 .jakeHead {

@@ -77,3 +77,41 @@
     margin-right: 5px;
     font-size: 12px;
 }
+
+.editTravelCardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%;
+    background-color: #66CDAA;
+    border-color: #1E6D64;
+}
+
+#travelLog.Card input,
+#travelLog.Card select,
+#travelLog.Card textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 2px;
+    border: 2px solid #1E6D64;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    font-family: 'Comic Sans MS';
+}
+
+#travelLog.Card button {
+    width: 20%;
+    padding: 10px;
+    margin: 2px;
+    border: 2px solid #1E6D64;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    font-family: 'Comic Sans MS';
+}
+
+#travelLog.Card button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-color: #1E6D64;
+}

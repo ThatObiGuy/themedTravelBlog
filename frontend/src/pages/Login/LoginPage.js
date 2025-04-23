@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from '../../axiosConfig'; // Import axios instance
 import './LoginPage.css';
 
 const LoginPage = () => {
+    const [credentials, setCredentials] = useState({ username: '', password: '' });
+    const [loggedInUser, setLoggedInUser] = useState(null);
+    const [details, setDetails] = useState({});
 
     useEffect(() => {
 
@@ -33,16 +37,53 @@ const LoginPage = () => {
         document.addEventListener('mousemove', handleMouseMove);
 
     }, []);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setCredentials({ ...credentials, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Prevent form submission from reloading the page
+        axios.post('/api/login', credentials)
+            .then((response) => {
+                alert(response.data.message); // Alert success message
+                const user = response.data.user;
+                sessionStorage.setItem('loggedInUser', JSON.stringify(user)); // Store user details
+                setLoggedInUser(user);
+                fetchUserDetails(user.id); // Fetch user details immediately after login
+            })
+            .catch((error) => {
+                alert(error.response?.data?.error || 'Login failed'); // Alert error message
+            });
+    };
+
+    const fetchUserDetails = (id) => {
+        axios.get(`/api/login/${id}`) // Use the correct API endpoint
+            .then((response) => {
+                setDetails(response.data.user); // Set user details
+            })
+            .catch((error) => {
+                console.error(error); // Log error
+            });
+    };
     
     return (
         <div className="loginPage">
 
             <h1>Login</h1>
 
+            
+
             <div className="container">
         
         
                 <div className="jakeContainer">
+
+                <div className="lock">
+                    <div className="lockHole"></div>
+                </div>
+                
                     
                     <div className="jakeHead">
                         <div className="jakeEyesContainer">
@@ -60,15 +101,39 @@ const LoginPage = () => {
                         <div className="jakeNose"></div>
                         
                         <div className="loginForm">
-                            <form>
-                                <div className="formGroup">
-                                    <input type="text" className="formInput" placeholder="Username" required />
+                        {loggedInUser ? (
+                                <div className="userInfo">
+                                    <h2>Welcome, {details.username}!</h2>
+                                    <p>Email: {details.email}</p>
+                                    <p>Address: {details.address || 'N/A'}</p>
                                 </div>
-                                <div className="formGroup">
-                                    <input type="password" className="formInput" placeholder="Password" required />
-                                </div>
-                                <button type="submit" className="submitBtn">Adventure Time!</button>
-                            </form>
+                            ) : (
+                                <form onSubmit={handleSubmit}>
+                                    <div className="formGroup">
+                                        <input
+                                            type="text"
+                                            name="username"
+                                            className="formInput"
+                                            placeholder="Username"
+                                            value={credentials.username}
+                                            onChange={handleInputChange}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="formGroup">
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            className="formInput"
+                                            placeholder="Password"
+                                            value={credentials.password}
+                                            onChange={handleInputChange}
+                                            required
+                                        />
+                                    </div>
+                                    <button type="submit" className="submitBtn">Adventure Time!</button>
+                                </form>
+                            )}
                         </div> {/* end of login form */}
 
                     </div>{/* end of jake head */}

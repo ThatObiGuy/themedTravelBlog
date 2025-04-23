@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../axiosConfig';
 import './JourneyPlansPage.css';
 
+const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+
 const JourneyPlansPage = () => {
     const [journeyPlans, setJourneyPlans] = useState([]);
     const [showCreateForm, setShowCreateForm] = useState(false);
@@ -9,7 +11,7 @@ const JourneyPlansPage = () => {
     const [editingPlanId, setEditingPlanId] = useState(null); // Track which plan is being edited
     const [editedPlan, setEditedPlan] = useState({}); // Store the edited plan details
     const [newPlan, setNewPlan] = useState({
-        user_id: 1, // hardcoded for now, will be replaced with user_id from context
+        user_id: loggedInUser?.id || null,
         journey_name: '',
         locations: '',
         start_date: '',

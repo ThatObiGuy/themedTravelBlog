@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../axiosConfig';
 import './TravelLogsPage.css';
 
+const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+
 const TravelLogsPage = () => {
     const [travelLogs, setTravelLogs] = useState([]);
     const [showCreateForm, setShowCreateForm] = useState(false);
     const [refreshLogs, setRefreshLogs] = useState(0);
+    const [editingLogId, setEditingLogId] = useState(null); // Track which log is being edited
+    const [editedLog, setEditedLog] = useState({}); // Store the edited log details
     const [newLog, setNewLog] = useState({
-        user_id: 1, // hardcoded for now, will be replaced with user_id from context
+        user_id: loggedInUser?.id || null,
         title: '',
         description: '',
         start_date: '',
@@ -28,11 +32,24 @@ const TravelLogsPage = () => {
         };
 
         fetchTravelLogs(); // Call the function
+
+        // Fetch logged-in user from sessionStorage
+        const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+        if (loggedInUser && loggedInUser.id) {
+            setNewLog((prevLog) => ({
+                ...prevLog,
+                user_id: loggedInUser.id, // Set user_id to the logged-in user's ID
+            }));
+        }
     }, [refreshLogs]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setNewLog({ ...newLog, [name]: value });
+        if (editingLogId) {
+            setEditedLog({ ...editedLog, [name]: value });
+        } else {
+            setNewLog({ ...newLog, [name]: value });
+        }
     };
 
     const handleCreateLog = () => {
@@ -55,9 +72,32 @@ const TravelLogsPage = () => {
             });
     };
 
+    const handleEditLog = (log) => {
+        setEditingLogId(log.log_id);
+        setEditedLog({ ...log });
+    };
+
+    const handleSaveEdit = (log_id) => {
+        axios.put(`/api/travelLog/${log_id}`, editedLog)
+            .then(() => {
+                alert('Travel Log Updated!');
+                setEditingLogId(null);
+                setEditedLog({});
+                setRefreshLogs(refreshLogs + 1);
+            })
+            .catch(error => {
+                console.error('Error updating travel log:', error);
+            });
+    };
+
+    const handleCancelEdit = () => {
+        setEditingLogId(null);
+        setEditedLog({});
+    };
+
     const handleDeleteLog = (log_id) => {
         console.log('Deleting log with ID:', log_id); // Log the log ID to be deleted
-        axios.delete(`/api/travelLog/${log_id}`) // Send DELETE request to backend
+        axios.delete(`/api/travelLog/${log_id}`, log_id) // Send DELETE request to backend
             .then(() => {
                 alert('Travel Log Deleted!'); // Alert user of success
                 // Update state to remove the deleted plan
@@ -153,46 +193,82 @@ const TravelLogsPage = () => {
                 </div>
             )}
 
-            <div className="travelLogCardContainer">
-
+<div className="travelLogCardContainer">
                 {travelLogs.map(log => (
-                    <div key={log.id} id="travelLog" className="Card">
-
-                        <div className="travelCardContent">
-                            <h3>{log.title}</h3>
-                            <p>{log.description}</p>
-                            <p><strong>Start Date:</strong> {log.start_date}</p>
-                            <p><strong>End Date:</strong> {log.end_date}</p>
-                            <p><strong>Post Date:</strong> {log.post_date}</p>
-
-                            <div className="tags">
-                                {(log.tags ? log.tags.split(',') : []).map(tag => (
-                                    <span key={tag.trim()} className="tag">{tag.trim()}</span>
-                                ))}
+                    <div key={log.log_id} id="travelLog" className="Card">
+                        {editingLogId === log.log_id ? (
+                            <div className="editTravelCardContent">
+                                <input
+                                    type="text"
+                                    name="title"
+                                    value={editedLog.title}
+                                    onChange={handleInputChange}
+                                    placeholder="Title"
+                                />
+                                <input
+                                    type="text"
+                                    name="description"
+                                    value={editedLog.description}
+                                    onChange={handleInputChange}
+                                    placeholder="Description"
+                                />
+                                <input
+                                    type="text"
+                                    name="start_date"
+                                    value={editedLog.start_date}
+                                    onChange={handleInputChange}
+                                    placeholder="Start Date"
+                                />
+                                <input
+                                    type="text"
+                                    name="end_date"
+                                    value={editedLog.end_date}
+                                    onChange={handleInputChange}
+                                    placeholder="End Date"
+                                />
+                                <input
+                                    type="text"
+                                    name="tags"
+                                    value={editedLog.tags}
+                                    onChange={handleInputChange}
+                                    placeholder="Tags"
+                                />
+                                <button onClick={() => handleSaveEdit(log.log_id)}>Save</button>
+                                <button onClick={handleCancelEdit}>Cancel</button>
                             </div>
-                        </div>
-
-                        <div className="CRUDIcons">
-                            <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="5" y="5" width="40" height="40" rx="5" fill="#2A9D8F" stroke="#1E6D64" strokeWidth="3"/>
-                                <text x="25" y="25" textAnchor="middle" dominantBaseline="middle">✏️</text>
-                            </svg>
-                            <svg
-                                width="50"
-                                height="50"
-                                viewBox="0 0 50 50"
-                                xmlns="http://www.w3.org/2000/svg"
-                                onClick={() => handleDeleteLog(log.log_id)} // Call delete function on click
-                            >
-                                <rect x="5" y="5" width="40" height="40" rx="5" fill="#2A9D8F" stroke="#1E6D64" strokeWidth="3"/>
-                                <text x="25" y="25" textAnchor="middle" dominantBaseline="middle">🗑️</text>
-                            </svg>
-
-                        </div>
-
+                        ) : (
+                            <div className="travelCardContent">
+                                <h3>{log.title}</h3>
+                                <p>{log.description}</p>
+                                <p><strong>Start Date:</strong> {log.start_date}</p>
+                                <p><strong>End Date:</strong> {log.end_date}</p>
+                                <p><strong>Tags:</strong> {log.tags}</p>
+                                <div className="CRUDIcons">
+                                    <svg
+                                        width="50"
+                                        height="50"
+                                        viewBox="0 0 50 50"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        onClick={() => handleEditLog(log)}
+                                    >
+                                        <rect x="5" y="5" width="40" height="40" rx="5" fill="#2A9D8F" stroke="#1E6D64" strokeWidth="3" />
+                                        <text x="25" y="25" textAnchor="middle" dominantBaseline="middle">✏️</text>
+                                    </svg>
+                                    <svg
+                                        width="50"
+                                        height="50"
+                                        viewBox="0 0 50 50"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        onClick={() => handleDeleteLog(log.log_id)}
+                                    >
+                                        <rect x="5" y="5" width="40" height="40" rx="5" fill="#2A9D8F" stroke="#1E6D64" strokeWidth="3" />
+                                        <text x="25" y="25" textAnchor="middle" dominantBaseline="middle">🗑️</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 ))}
-
             </div>{/* end of travel logs container */}
 
         </div>
